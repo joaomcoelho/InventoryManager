@@ -77,7 +77,7 @@ Inventory endpoints:
 ## Tasks and Examples
 
 ### Register new product batches for the warehouse
-"Supplier2" delivered 1000 units of Tuna with expiration date "2021-03-22". The following request registers this delivery in the warehouse:
+* "Supplier2" delivered 1000 units of Tuna with expiration date "2021-03-22". The following request registers this delivery in the warehouse:
 </br>`POST /Inventory`
 ```json
     {
@@ -91,7 +91,7 @@ Inventory endpoints:
 ```
 
 ### Update or modify stock of any batch
-"Customer1" requested a super dish that 10 units of Tuna. To cook it we used 10 units of Tuna from a batch with "2021-03-22" expiration date.
+* "Customer1" requested a super dish that 10 units of Tuna. To cook it we used 10 units of Tuna from a batch with "2021-03-22" expiration date.
 The following request registers this delivery in the warehouse:
 </br>`POST /Inventory`
 ```json
@@ -105,7 +105,7 @@ The following request registers this delivery in the warehouse:
     }
 ```
 
-"Mary" dropped in the floor 200 units of Tuna from batch with "2021-03-22" expiration date.
+* "Mary" dropped in the floor 200 units of Tuna from batch with "2021-03-22" expiration date.
 The following request registers this delivery in the warehouse:
 </br>`POST /Inventory`
 ```json
@@ -121,31 +121,46 @@ The following request registers this delivery in the warehouse:
 
 ### Retrieve the current inventory per product 
 
-* for each batch individually </br>
-Now I want to know how is my Tuna inventory broken down by batches.
+* for each batch individually: </br>
+Now I want to know how is my Tuna inventory by batches.
 The following request returns the information:
 </br>`GET /Inventory/Product/13`
 
-* for the whole warehouse, broken down by batches </br>
+* for the whole warehouse, broken down by batches: </br>
 I want to see my whole warehouse also broken down by batches.
 The following request returns the information:
 </br>`GET /Inventory/Product`
 
 ### Retrieve an overview of the freshness of food we have in the warehouse
 
-Sure we cannot deliver expired foo! I need to see what expired food we have in the warehouse.
+* Sure we cannot deliver expired foo! I need to see what expired food we have in the warehouse.
 The following request returns the information:
 </br>`GET /Inventory/State/3`
 
-What about fresh food in the warehouse?
+* What about fresh food in the warehouse?
 The following request returns the information:
 </br>`GET /Inventory/State/1`
 
 ### Retrieve the history of a given batch
 
-What happen with all food in the batch with "2021-03-22" expiration date.
+* What happen with all food in the batch with "2021-03-22" expiration date.
 The following request returns the information:
 </br>`GET /Batch/History/15` where 15 is the corresponding batchId for this expiration date.
+
+### ▶️ Next Steps
+- Finish developing order registering in the warehouse.
+- Daily process to update the batch state. For example to update the batch state to "Expired" if the expiration date is in the past or "Expiring Today" if the expiration date is today.
+- Implement authentication and authorization
+
+### 🔔 Improvements
+- POST, PUT endpoints do not validate the input data. Server side validation should be added in order to instantly report to the client bad/missing input fields.
+- "ControllerBase" class handles all HTTP Status code responses. Some work is needed in order to provide more accurate/custom status code responses to the client.
+- Use a continuous integration like Travis, Jenkins, etc...
+
+### ☀️ Ideas
+- Develop some Kpis using InventoryHistory. For example: "How much food is lost per year in the wharehouse", "What are the most requested ingredients in each season (Winter, Summer, Autumn, Spring", "How much food we let getting expired every month".
+- Integrate dishes. If we knew which products are required to cook a certain dish and what products we do have on inventory, we could actually optimize the use of the warehouse by cooking the right dishes with the products that are available at the moment.
+
 
 ## Authors
 * **João André Coelho** - *Inventory Management - .Net Core* - [joaomcoelho](https://github.com/joaomcoelho)
