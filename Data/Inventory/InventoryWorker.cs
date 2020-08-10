@@ -49,8 +49,10 @@ namespace FELFEL.Data
                 if (batch == null)
                 {
                     batch = new Batch { ExpirationDate = expirationDate, BatchStateId = _calculateFreshness(expirationDate) };
+                    batch.BatchState = await _context.BatchState.FirstOrDefaultAsync(b => b.Id == batch.BatchStateId);
                     await _context.Batch.AddAsync(batch);
                     await _context.SaveChangesAsync();
+
                 }
 
                 /*
