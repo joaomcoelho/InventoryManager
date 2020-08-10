@@ -46,7 +46,15 @@ Batch endpoints:
 
 * [Get Batch with {id}] : `GET /Batch/{id}`
 * [List Batch] : `GET /Batch`
-* [Add Batch] : `POST /Batch`
+* [Insert Batch] : `POST /Batch`
+  
+  body*:
+```json
+    {
+        "expirationDate": "2033-01-19",
+        "batchStateId": 3
+    }
+```
 * [Update Batch] : `PUT /Batch`
 * [Delete Batch with {id}] : `DELETE /Batch/{id}`
 * [History of a batch with {id}] : `GET /Batch/History/{id}`
@@ -54,6 +62,18 @@ Batch endpoints:
 Inventory endpoints:
 
 * [Add/Modify Product in inventory] : `POST /Inventory`
+  
+  body*:
+```json
+    {
+        "productId" : 13,
+        "stock" : 9,
+        "supplierId" : 2,
+        "customerId" : null,
+        "expirationDate" : "2021-03-22",
+        "reason" : "Tuna delivery"
+    }
+```
 * [Get the current inventory per product {productId}] : `GET /Inventory/Product/{productId}`
 * [Get the current inventory for the whole warehouse] : `GET /Inventory/Product`
 * [Get an overview of the food {batchStateId} (fresh, expiring today, expired))] : `GET /Inventory/State/{batchStateId}`
