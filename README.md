@@ -118,7 +118,8 @@ The following request registers this delivery in the warehouse:
         "reason" : "Dropped in the floor"
     }
 ```
-* Update the stock. The stock of Tuna is currently 900 units I want to update it to 920.
+
+* Update the stock. The stock of Tuna from batch with "2021-03-22" is currently 900 units I want to update it to 920.
 ```json
     {
         "productId" : 13,
