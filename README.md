@@ -156,6 +156,7 @@ The following request returns the information:
 - POST, PUT endpoints do not validate the input data. Server side validation should be added in order to instantly report to the client bad/missing input fields.
 - "ControllerBase" class handles all HTTP Status code responses. Some work is needed in order to provide more accurate/custom status code responses to the client.
 - Use a continuous integration like Travis, Jenkins, etc...
+- Log errors.
 
 ### ☀️ Ideas
 - Develop some Kpis using InventoryHistory. For example: "How much food is lost per year in the wharehouse", "What are the most requested ingredients in each season (Winter, Summer, Autumn, Spring", "How much food we let getting expired every month".
