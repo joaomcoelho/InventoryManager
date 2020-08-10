@@ -4,14 +4,14 @@
 
     src
     ├── Api                              # Api
-    │   ├── Controllers                     # Controllers with the endpoints for the api
+    │   ├── Controllers                  # Controllers with the endpoints for the api
     ├── Data                             # Database entities and workers [Data Access Layer]
     ├── Library                          # Library
-    │   ├── Enums                           # Lookup structures
-    │   └── Helpers                         # Helper methods that can be used everywhere in the app
+    │   ├── Enums                        # Lookup structures
+    │   └── Helpers                      # Helper methods that can be used everywhere in the app
     ├── Services                         # Database services [Service Layer]
-    │   ├── InventoryManagerService             # InventoryManager IServices and Services 
-    │   └── DTO                             # InventoryManager Data Transfer Objects
+    │   ├── InventoryManagerService      # InventoryManager IServices and Services 
+    │   └── DTO                          # InventoryManager Data Transfer Objects
     │       └── InventoryManager                    
     └── README.md
 
