@@ -24,7 +24,7 @@ namespace FELFEL.Data
             var list = await _context.Batch.AddAsync(batch);
             await _context.SaveChangesAsync();
 
-            return await _context.Batch.ToListAsync();
+            return await _context.Batch.Include(b => b.BatchState).ToListAsync();
         }
 
         public async Task<Batch> Update(Batch batch)
@@ -36,7 +36,7 @@ namespace FELFEL.Data
             _context.Batch.Update(updatedBatch);
             await _context.SaveChangesAsync();
 
-            return updatedBatch;
+            return await _context.Batch.Include(b => b.BatchState).FirstOrDefaultAsync(b => b.Id == updatedBatch.Id);
         }
 
         public async Task<List<Batch>> Delete(int id)
@@ -45,7 +45,7 @@ namespace FELFEL.Data
             _context.Batch.Remove(deleteBatch);
             await _context.SaveChangesAsync();
 
-            return await _context.Batch.ToListAsync(); ;
+            return await _context.Batch.Include(b => b.BatchState).ToListAsync(); ;
         }
 
         public async Task<List<BatchHistory>> GetBatchHistory(int batchId)

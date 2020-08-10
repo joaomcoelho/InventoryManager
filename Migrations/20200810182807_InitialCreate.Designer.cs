@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FELFEL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200810160703_InitialCreate")]
+    [Migration("20200810182807_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

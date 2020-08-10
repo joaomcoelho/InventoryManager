@@ -45,7 +45,7 @@ namespace FELFEL.Data
                     - Create a batch if does not exist.
                     - Get the batch if exists.
                 */
-                Batch batch = await _context.Batch.FirstOrDefaultAsync(b => b.ExpirationDate == expirationDate);
+                Batch batch = await _context.Batch.Include(b => b.BatchState).FirstOrDefaultAsync(b => b.ExpirationDate == expirationDate);
                 if (batch == null)
                 {
                     batch = new Batch { ExpirationDate = expirationDate, BatchStateId = _calculateFreshness(expirationDate) };
@@ -83,7 +83,7 @@ namespace FELFEL.Data
 
                 dbContextTransaction.Commit();
 
-                return await _context.Inventory.ToListAsync();
+                return await _context.Inventory.Include(i => i.Product).ToListAsync();
             }
         }
 
