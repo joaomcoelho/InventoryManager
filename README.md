@@ -16,14 +16,48 @@
     └── README.md
 
 ### Requirements
+This Api was built using .NetCore version 3.1 with the EntityFrameworkCore and AutoMapper Packages on top a SQL Server Express database.
 
-### Installing
+### Migrations
+Creates the initial migration
+```
+dotnet ef migrations add InitialCreate
+```
 
-Start application
+Updates the database
 ```
-npm install
-npm run start
+dotnet ef database update
 ```
+
+### Run the application using .Net Core CLI
+Builds application
+```
+dotnet build
+```
+
+Listens the application on https://localhost:5001 and https://localhost:5000
+```
+dotnet run
+```
+
+### EndPoints
+
+Batch endpoints:
+
+* [Get Batch with {id}] : `GET /Batch/{id}`
+* [List Batch] : `GET /Batch`
+* [Add Batch] : `POST /Batch`
+* [Update Batch] : `PUT /Batch`
+* [Delete Batch with {id}] : `DELETE /Batch/{id}`
+
+* [History of a batch with {id}] : `GET /Batch/History/{id}`
+
+Inventory endpoints:
+
+* [Add/Modify Product in inventory] : `POST /Inventory`
+* [Get the current inventory per product {productId}] : `GET /Inventory/Product/{productId}`
+* [Get the current inventory for the whole warehouse] : `GET /Inventory/Product`
+* [Get an overview of the food {batchStateId} (fresh, expiring today, expired))] : `GET /Inventory/State/{batchStateId}`
 
 ## Authors
 * **João André Coelho** - *Inventory Management - .Net Core* - [joaomcoelho](https://github.com/joaomcoelho)
