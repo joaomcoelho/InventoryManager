@@ -49,7 +49,6 @@ Batch endpoints:
 * [Add Batch] : `POST /Batch`
 * [Update Batch] : `PUT /Batch`
 * [Delete Batch with {id}] : `DELETE /Batch/{id}`
-
 * [History of a batch with {id}] : `GET /Batch/History/{id}`
 
 Inventory endpoints:
