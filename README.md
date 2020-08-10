@@ -118,6 +118,17 @@ The following request registers this delivery in the warehouse:
         "reason" : "Dropped in the floor"
     }
 ```
+* Update the stock. The stock of Tuna is currently 900 units I want to update it to 920.
+```json
+    {
+        "productId" : 13,
+        "stock" : 20,
+        "supplierId" : null,
+        "customerId" : null,
+        "expirationDate" : "2021-03-22",
+        "reason" : "Stock Update"
+    }
+```
 
 ### Retrieve the current inventory per product 
 
