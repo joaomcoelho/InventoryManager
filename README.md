@@ -18,6 +18,9 @@
 ### Requirements
 This Api was built using .Net Core version 3.1 with the EntityFrameworkCore and AutoMapper Packages on top a SQL Server Express database.
 
+### Data Model
+![Drag Racing](InventoryManagerDataModel.png)
+
 ### Migrations
 Creates the initial migration
 ```
@@ -91,7 +94,7 @@ Inventory endpoints:
 ```
 
 ### Update or modify stock of any batch
-* "Customer1" requested a super dish that 10 units of Tuna. To cook it we used 10 units of Tuna from a batch with "2021-03-22" expiration date.
+* "Customer1" requested a bundle of dishes with Tuna. To cook them we used 10 units of Tuna from the batch with "2021-03-22" expiration date.
 The following request registers this delivery in the warehouse:
 </br>`POST /Inventory`
 ```json
@@ -115,11 +118,12 @@ The following request registers this delivery in the warehouse:
         "supplierId" : null,
         "customerId" : null,
         "expirationDate" : "2021-03-22",
-        "reason" : "Dropped in the floor"
+        "reason" : "Dropped to the floor"
     }
 ```
 
 * Update the stock. The stock of Tuna from batch "2021-03-22" expiration date, is currently 900 units I want to update it to 920.
+</br>`POST /Inventory`
 ```json
     {
         "productId" : 13,
