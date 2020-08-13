@@ -163,6 +163,45 @@ The following request returns the information:
 The following request returns the information:
 </br>`GET /Batch/History/15` where 15 is the corresponding batchId for this expiration date.
 
+## Validation
+The following examples of server side validation were implemented.
+
+Server Side custom validation added to PUT and POST endpoints. 
+
+* [Insert Batch] : `POST /Batch`
+* [Update Batch] : `PUT /Batch`
+<br/>A error validation message list is sent to the client if there is already a batch with the same expiration date, with HTTP Status 400 "Bad Request".
+```json
+    [
+        {
+            "fieldName": "ExpirationDate",
+            "validationMessage": "Expiration date already exists."
+        }
+    ]
+```
+
+* [Add/Modify Product in inventory] : `POST /Inventory`
+<br/> A error validation message list is sent to the client if the product does not exist or if the client is trying to update the stock to a negative value, with HTTP Status 400 "Bad Request".
+```json
+    [
+        {
+            "fieldName": "ProductID",
+            "validationMessage": "Product does not exist"
+        },
+        {
+            "fieldName": "Stock",
+            "validationMessage": "Current Stock is 0 and cannot be negative."
+        }
+    ]
+```
+
+## Internal Server Errors
+Responses with errors that happen in the server for unexpected reasons have HTTP Status 500 "Internal Server Error".
+Responses with errors that happen in the database have HTTP Status 500 "Internal Server Error". For security reasons the detail of the error message from the database is not sent back to the client.
+
+## Success
+Success requests have responses with HTTP Status 200 "OK".
+
 ### ▶️ Next Steps
 - Finish developing order registering in the warehouse.
 - Daily process to update the batch state. For example to update the batch state to "Expired" if the expiration date is in the past or "Expiring Today" if the expiration date is today.
